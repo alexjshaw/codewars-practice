@@ -13,21 +13,29 @@ Examples
 // Iterate through array, check each index
 // If "-" or "_", remove and convert next letter to upper case
 
-function toCamelCase(str){
-  const chars = [...str]
+// Attempt 1
 
-  if (chars.length === 0) {
-    return ""
-  }
+// function toCamelCase(str){
+//   const chars = [...str]
 
-  for (let i = 0; i < chars.length; i++) {
-    if (chars[i] == "-" || chars[i] == "_") {
-      chars[i+1] = chars[i+1].toUpperCase()
-      chars.splice(i, 1)
-    }
-  }
-  const output = chars.join("")
-  return output
+//   if (chars.length === 0) {
+//     return ""
+//   }
+
+//   for (let i = 0; i < chars.length; i++) {
+//     if (chars[i] == "-" || chars[i] == "_") {
+//       chars[i+1] = chars[i+1].toUpperCase()
+//       chars.splice(i, 1)
+//     }
+//   }
+//   const output = chars.join("")
+//   return output
+// }
+
+// Attempt 2
+
+function toCamelCase(str) {
+  return str.replace(/[-_](.)/g, (match, char) => char.toUpperCase());
 }
 
 // toCamelCase('')
