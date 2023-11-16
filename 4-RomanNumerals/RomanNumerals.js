@@ -17,8 +17,6 @@ D          500
 M          1,000
 */
 
-
-
 function solution(number){
   var val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
   var syms = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
@@ -27,17 +25,12 @@ function solution(number){
   while (number > 0) {
     let count = Math.floor(number / val[i])
       for (var j = 0; j < count; j++) {
-        console.log('j', j)  
-        console.log('Math.floor(number / val[i])', Math.floor(number / val[i]))
         romanNum += syms[i];
       }
       number -= val[i] * count;
       i++;
   }
-  console.log(romanNum)
   return romanNum;
 }
-
-solution(350)
 
 module.exports = solution
