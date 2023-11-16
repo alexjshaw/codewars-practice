@@ -17,20 +17,50 @@ D          500
 M          1,000
 */
 
-function solution(number){
-  var val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
-  var syms = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
-  var romanNum = '';
-  var i = 0;
-  while (number > 0) {
-    let count = Math.floor(number / val[i])
-      for (var j = 0; j < count; j++) {
-        romanNum += syms[i];
-      }
-      number -= val[i] * count;
-      i++;
+// function solution(number){
+//   var val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+//   var syms = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+//   var romanNum = '';
+//   var i = 0;
+//   while (number > 0) {
+//     let count = Math.floor(number / val[i])
+//       for (var j = 0; j < count; j++) {
+//         romanNum += syms[i];
+//       }
+//       number -= val[i] * count;
+//       i++;
+//   }
+//   return romanNum;
+// }
+
+function solution(number) {
+  const values = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XL: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1
   }
-  return romanNum;
+  let romanNum = ""
+
+  while (number > 0) {
+    for (i in values) {
+      if (values[i] <= number) {
+        romanNum += i
+        number -= values[i]
+        break
+      }
+    }
+  }
+  return romanNum
 }
 
 module.exports = solution
